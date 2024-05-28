@@ -2,11 +2,17 @@ public class Raumschiff {
         private String name;
         private int posX;
         private int posY;
+        private Kapitaen kapitaen;
 
-        public Raumschiff(String name,int posX, int posY) {
+        public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen) {
             this.name = name;
             this.posX = posX;
             this.posY = posY;
+            this.kapitaen = kapitaen;
+        }
+
+        public Kapitaen getKapitaen() {
+            return kapitaen;
         }
 
         public String getName() {
