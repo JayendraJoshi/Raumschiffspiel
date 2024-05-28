@@ -2,6 +2,20 @@ import java.util.Scanner;
 
 public class Sonnensystem {
     public static void main(String[] args) {
+
+        Planet auroria = new Planet("Auroria", true, 5, 5);
+        Planet solara = new Planet("Solara", false, 10, 10);
+        Planet ktaris = new Planet("Ktaris", true, 15, 15);
+
+        Ladung ladung1 = new Ladung("Ladung1", 10);
+        Ladung ladung2 = new Ladung("Ladung2", 20);
+        Ladung ladung3 = new Ladung("Ladung3", 30);
+        Ladung ladung4 = new Ladung("Ladung4", 40);
+
+        auroria.addLadung(ladung1);
+        solara.addLadung(ladung2);
+        ktaris.addLadung(ladung3);
+
         Kapitaen alexiaNova = new Kapitaen("Alexia Nova", 7, 10);
         Kapitaen zenithNightfall = new Kapitaen("Zenith Nightfall", 8, 9);
 

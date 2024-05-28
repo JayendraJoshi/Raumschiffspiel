@@ -3,6 +3,7 @@ public class Raumschiff {
         private int posX;
         private int posY;
         private Kapitaen kapitaen;
+        private Ladung ladung;
 
         public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen) {
             this.name = name;
@@ -25,6 +26,17 @@ public class Raumschiff {
         }
         public int getY(){
             return this.posY;
+        }
+        public void addLadung(Ladung ladung) {
+            this.ladung = ladung;
+        }
+
+        public void removeLadung() {
+            this.ladung = null;
+        }
+
+        public Ladung getLadung() {
+            return ladung;
         }
 
         public void fliegen(char richtung) {
