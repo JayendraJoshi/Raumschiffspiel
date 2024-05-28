@@ -1,40 +1,44 @@
 import java.util.Scanner;
-
+import java.util.ArrayList;
 public class Sonnensystem {
     public static void main(String[] args) {
 
-        Planet auroria = new Planet("Auroria", true, 5, 5);
-        Planet solara = new Planet("Solara", false, 10, 10);
-        Planet ktaris = new Planet("Ktaris", true, 15, 15);
 
-        Ladung ladung1 = new Ladung("Ladung1", 10);
-        Ladung ladung2 = new Ladung("Ladung2", 20);
-        Ladung ladung3 = new Ladung("Ladung3", 30);
-        Ladung ladung4 = new Ladung("Ladung4", 40);
+        ArrayList<Planet> planeten = new ArrayList<>();
+        planeten.add(new Planet("Auroria", true, 5, 5));
+        planeten.add(new Planet("Solara", false, 10, 10));
+        planeten.add(new Planet("Ktaris", true, 15, 15));
 
-        auroria.addLadung(ladung1);
-        solara.addLadung(ladung2);
-        ktaris.addLadung(ladung3);
+        ArrayList<Ladung> ladungen = new ArrayList<>();
+        ladungen.add(new Ladung("Ladung1", 10));
+        ladungen.add(new Ladung("Ladung2", 20));
+        ladungen.add(new Ladung("Ladung3", 30));
+        ladungen.add(new Ladung("Ladung4", 40));
 
-        Kapitaen alexiaNova = new Kapitaen("Alexia Nova", 7, 10);
-        Kapitaen zenithNightfall = new Kapitaen("Zenith Nightfall", 8, 9);
+        planeten.get(0).addLadung(ladungen.get(0));
+        planeten.get(1).addLadung(ladungen.get(1));
+        planeten.get(2).addLadung(ladungen.get(2));
 
-        Raumschiff eosNova = new Raumschiff("Eos Nova",0,0,alexiaNova);
-        Raumschiff auroraQuest = new Raumschiff("Aurora Quest",0,0,zenithNightfall);
+        ArrayList<Raumschiff> raumschiffe = new ArrayList<>();
+        raumschiffe.add(new Raumschiff("Eos Nova",0,0,new Kapitaen("Alexia Nova", 7, 10),100,100,100,100,100));
+        raumschiffe.add(new Raumschiff("Aurora Quest",0,0,new Kapitaen("Zenith Nightfall", 8, 9),100,100,100,100,100));
+
+        ArrayList<Asteroidenfeld> asteroidenfelder = new ArrayList<>();
+        asteroidenfelder.add(new Asteroidenfeld(7, 20, 20));
 
         boolean gameOver = false;
         Scanner scanner = new Scanner(System.in);
 
         while (!gameOver) {
-            System.out.println("Raumschiff Koordinaten: (" + eosNova.getX() + ", " + eosNova.getY() + ")");
+            System.out.println("Raumschiff Koordinaten: (" + raumschiffe.get(0).getX() + ", " + raumschiffe.get(0).getY() + ")");
             System.out.println("Bewegung (a/w/s/d):");
             char richtung = scanner.next().charAt(0);
-            eosNova.fliegen(richtung);
-            System.out.println("Gesteuert von " + eosNova.getKapitaen().getName());
-            eosNova.getKapitaen().setName("Alexia Starlight Nova");
+            raumschiffe.get(0).fliegen(richtung);
+            System.out.println("Gesteuert von " + raumschiffe.get(0).getKapitaen().getName());
+            raumschiffe.get(0).getKapitaen().setName("Alexia Starlight Nova");
 
-            if (eosNova.pruefeKoordinaten(auroraQuest.getX(), auroraQuest.getY())) {
-                System.out.println("Hier ist das Raumschiff " + auroraQuest.getName());
+            if (raumschiffe.get(0).pruefeKoordinaten(raumschiffe.get(1).getX(), raumschiffe.get(1).getY())) {
+                System.out.println("Hier ist das Raumschiff " + raumschiffe.get(1).getName());
                 gameOver = true;
             }
         }
