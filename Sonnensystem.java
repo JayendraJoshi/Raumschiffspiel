@@ -20,7 +20,7 @@ public class Sonnensystem {
         planeten.get(2).addLadung(ladungen.get(2));
 
         ArrayList<Raumschiff> raumschiffe = new ArrayList<>();
-        raumschiffe.add(new Raumschiff("Eos Nova",0,0,new Kapitaen("Alexia Nova", 7, 10),100,100,100,100,100));
+        raumschiffe.add(new Raumschiff("Eos Nova",10,0,new Kapitaen("Alexia Nova", 7, 10),100,100,100,100,100));
         raumschiffe.add(new Raumschiff("Aurora Quest",0,0,new Kapitaen("Zenith Nightfall", 8, 9),100,100,100,100,100));
 
         ArrayList<Asteroidenfeld> asteroidenfelder = new ArrayList<>();

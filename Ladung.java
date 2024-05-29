@@ -1,10 +1,14 @@
 public class Ladung {
     private String name;
     private int einheiten;
+    private int gewicht;
+    private int wert;
 
-    public Ladung(String name, int einheiten) {
+    public Ladung(String name, int einheiten, int gewicht, int wert) {
         this.name = name;
         this.einheiten = einheiten;
+        this.gewicht = gewicht;
+        this.wert =wert;
     }
 
     public Ladung() {
@@ -22,6 +26,12 @@ public class Ladung {
 
     public int getEinheiten() {
         return einheiten;
+    }
+    public int getGewicht(){
+        return gewicht;
+    }
+    public int getWert(){
+        return wert;
     }
 
     public void setEinheiten(int einheiten) {

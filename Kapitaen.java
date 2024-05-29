@@ -2,11 +2,13 @@ public class Kapitaen {
     private String name;
     private int charisma;
     private int erfahrung;
+    private int geld;
 
-    public Kapitaen(String name, int charisma, int erfahrung) {
+    public Kapitaen(String name, int charisma, int erfahrung, int geld) {
         this.name = name;
         this.charisma = charisma;
         this.erfahrung = erfahrung;
+        this.geld = geld;
     }
 
     public String getName() {
@@ -31,6 +33,13 @@ public class Kapitaen {
 
     public void setErfahrung(int erfahrung) {
         this.erfahrung = erfahrung;
+    }
+
+    public int getGeld(){
+        return geld;
+    }
+    public void setGeld(int geld){
+        this.geld = geld;
     }
 
     public void diplomatischeVerhandlung() {

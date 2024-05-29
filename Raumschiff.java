@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Raumschiff {
 
         private String name;
@@ -10,8 +13,10 @@ public class Raumschiff {
         private int energieVersorgung;
         private int manoevrierFaehigkeit;
         private int waffenstaerke;
+        private ArrayList<Ladung> ladungen;
+        private int ladungskapazitaet;
 
-        public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen,int integritaetsgrad, int energieschild, int energieVersorgung, int manoevrierFaehigkeit, int waffenstaerke) {
+        public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen,int integritaetsgrad, int energieschild, int energieVersorgung, int manoevrierFaehigkeit, int waffenstaerke, int ladungskapazitaet) {
             this.name = name;
             this.posX = posX;
             this.posY = posY;
@@ -21,6 +26,8 @@ public class Raumschiff {
             this.energieVersorgung = energieVersorgung;
             this.manoevrierFaehigkeit = manoevrierFaehigkeit;
             this.waffenstaerke = waffenstaerke;
+            this.ladungen = new ArrayList<>();
+            this.ladungskapazitaet = ladungskapazitaet;
         }
 
         public Kapitaen getKapitaen() {
@@ -37,13 +44,6 @@ public class Raumschiff {
         }
         public int getY(){
             return this.posY;
-        }
-        public void addLadung(Ladung ladung) {
-            this.ladung = ladung;
-        }
-
-        public void removeLadung() {
-            this.ladung = null;
         }
 
         public Ladung getLadung() {
@@ -86,6 +86,41 @@ public class Raumschiff {
                     this.integritaetsgrad = 0;
                 }
             }
+        }
+        public void addLadung(Ladung ladung) {
+            if (getGesamtgewicht() + ladung.getGewicht() <= ladungskapazitaet) {
+                ladungen.add(ladung);
+            }
+        }
+
+        public void removeLadung(Ladung ladung) {
+            ladungen.remove(ladung);
+        }
+
+        public int getGesamtgewicht() {
+            int gesamtgewicht = 0;
+            for (Ladung ladung : ladungen) {
+                gesamtgewicht += ladung.getGewicht();
+            }
+            return gesamtgewicht;
+        }
+
+        public ArrayList<Ladung> getLadungen() {
+            return ladungen;
+        }
+
+        public void kaufenLadung(Ladung ladung, Handelsstation station) {
+            if (getKapitaen().getGeld() >= ladung.getWert()) {
+                addLadung(ladung);
+                getKapitaen().setGeld(getKapitaen().getGeld() - ladung.getWert());
+                station.removeLadung(ladung);
+            }
+        }
+
+        public void verkaufenLadung(Ladung ladung, Handelsstation station) {
+            removeLadung(ladung);
+            getKapitaen().setGeld(getKapitaen().getGeld() + ladung.getWert());
+            station.addLadung(ladung);
         }
 }
 
