@@ -10,18 +10,18 @@ public class Sonnensystem {
         planeten.add(new Planet("Ktaris", true, 15, 15));
 
         ArrayList<Ladung> ladungen = new ArrayList<>();
-        ladungen.add(new Ladung("Ladung1", 10));
-        ladungen.add(new Ladung("Ladung2", 20));
-        ladungen.add(new Ladung("Ladung3", 30));
-        ladungen.add(new Ladung("Ladung4", 40));
+        ladungen.add(new Ladung("Ladung1",10,3,3));
+        ladungen.add(new Ladung("Ladung2", 20,5,6));
+        ladungen.add(new Ladung("Ladung3", 30,9,5));
+        ladungen.add(new Ladung("Ladung4", 40,9,9));
 
         planeten.get(0).addLadung(ladungen.get(0));
         planeten.get(1).addLadung(ladungen.get(1));
         planeten.get(2).addLadung(ladungen.get(2));
 
         ArrayList<Raumschiff> raumschiffe = new ArrayList<>();
-        raumschiffe.add(new Raumschiff("Eos Nova",10,0,new Kapitaen("Alexia Nova", 7, 10),100,100,100,100,100));
-        raumschiffe.add(new Raumschiff("Aurora Quest",0,0,new Kapitaen("Zenith Nightfall", 8, 9),100,100,100,100,100));
+        raumschiffe.add(new Jaeger("Eos Nova",10,0,new Kapitaen("Alexia Nova", 7, 10,5),100,100,100,100,100,1000));
+        raumschiffe.add(new Transportschiff("Aurora Quest",0,0,new Kapitaen("Zenith Nightfall", 8, 9,10),100,100,100,100,100,2000));
 
         ArrayList<Asteroidenfeld> asteroidenfelder = new ArrayList<>();
         asteroidenfelder.add(new Asteroidenfeld(7, 20, 20));

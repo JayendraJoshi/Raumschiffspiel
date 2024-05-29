@@ -12,9 +12,10 @@ public class Raumschiff {
         private int energieschild;
         private int energieVersorgung;
         private int manoevrierFaehigkeit;
-        private int waffenstaerke;
+        protected int waffenstaerke;
         private ArrayList<Ladung> ladungen;
-        private int ladungskapazitaet;
+        protected int ladungskapazitaet;
+        protected String typ;
 
         public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen,int integritaetsgrad, int energieschild, int energieVersorgung, int manoevrierFaehigkeit, int waffenstaerke, int ladungskapazitaet) {
             this.name = name;
@@ -121,6 +122,9 @@ public class Raumschiff {
             removeLadung(ladung);
             getKapitaen().setGeld(getKapitaen().getGeld() + ladung.getWert());
             station.addLadung(ladung);
+        }
+        public String getTyp(){
+            return typ;
         }
 }
 
