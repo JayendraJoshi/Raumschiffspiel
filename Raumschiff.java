@@ -126,5 +126,16 @@ public class Raumschiff {
         public String getTyp(){
             return typ;
         }
+        public void setWaffenstaerke(int waffenstaerke){
+            this.waffenstaerke = waffenstaerke;
+        }
+
+        public int getWaffenstaerke() {
+            return waffenstaerke;
+        }
+
+        public void setIntegritaetsgrad(int integritaetsgrad) {
+            this.integritaetsgrad = integritaetsgrad;
+        }
 }
 
