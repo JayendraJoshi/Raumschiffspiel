@@ -38,6 +38,8 @@ public class Ladung {
         this.einheiten = einheiten;
     }
 
+
+
     public String toString(){
         return "Name: "+ this.name+" ,Einheit: "+this.einheiten+" ,Gewicht: "+this.gewicht+" ,Wert: "+this.wert;
     }

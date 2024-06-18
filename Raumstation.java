@@ -10,12 +10,11 @@ public class Raumstation {
     }
 
     public void reparieren(Raumschiff raumschiff) {
-        // Reparatur erhöht den Integritätsgrad des Raumschiffs
         raumschiff.setIntegritaetsgrad(100);
+        System.out.println("Das Raumschiff wurde repariert, der Integritaetsgrad beträgt wieder 100");
     }
 
     public void aufruesten(Raumschiff raumschiff) {
-        // Aufrüstung erhöht die Waffenstärke des Raumschiffs
         raumschiff.setWaffenstaerke(raumschiff.getWaffenstaerke() + 10);
     }
 
@@ -25,4 +24,8 @@ public class Raumstation {
     public int getPosY(){
         return posY;
     }
+    public String getName(){
+        return name;
+    }
+
 }

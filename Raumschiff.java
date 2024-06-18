@@ -19,12 +19,12 @@ public class Raumschiff {
         protected String typ;
         private Scanner scanner;
 
-        public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen,int integritaetsgrad, int energieschild, int energieVersorgung, int manoevrierFaehigkeit, int waffenstaerke, int ladungskapazitaet) {
+        public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen, int energieschild, int energieVersorgung, int manoevrierFaehigkeit, int waffenstaerke, int ladungskapazitaet) {
             this.name = name;
             this.posX = posX;
             this.posY = posY;
             this.kapitaen = kapitaen;
-            this.integritaetsgrad = integritaetsgrad;
+            this.integritaetsgrad = 100;
             this.energieschild = energieschild;
             this.energieVersorgung = energieVersorgung;
             this.manoevrierFaehigkeit = manoevrierFaehigkeit;
@@ -50,8 +50,8 @@ public class Raumschiff {
             return this.posY;
         }
 
-        public Ladung getLadung() {
-            return ladung;
+        public Ladung getLadung(int index) {
+            return ladungen.get(index);
         }
 
         public void fliegen(char richtung) {
@@ -118,6 +118,10 @@ public class Raumschiff {
                 addLadung(ladung);
                 getKapitaen().setGeld(getKapitaen().getGeld() - ladung.getWert());
                 station.removeLadung(ladung);
+                System.out.println("Kauf erfolgreich, Ladung wurde dem Raumschiff hinzugefügt.");
+            }
+            else{
+                System.out.println("Kauf fehlgeschlagen, nicht Genug Geld verfügbar.");
             }
         }
 
@@ -125,6 +129,7 @@ public class Raumschiff {
             removeLadung(ladung);
             getKapitaen().setGeld(getKapitaen().getGeld() + ladung.getWert());
             station.addLadung(ladung);
+            System.out.println("Der Verkauf war erfolgreich, das Geld wurde eingenommen und die Ladung übergeben");
         }
         public void ressourceAbbauen(Ressource ressource){
             this.ladungen.add(new Ladung(ressource.getName(),ressource.getEinheit(), ressource.getGewicht(), ressource.getWert()));
@@ -150,6 +155,7 @@ public class Raumschiff {
             }
 
         }
+
         public String getTyp(){
             return typ;
         }
@@ -167,5 +173,22 @@ public class Raumschiff {
         public int getIntegritaetsgrad(){
             return this.integritaetsgrad;
         }
+    @Override
+    public String toString() {
+        return "Raumschiff{" +
+                "name='" + name + '\'' +
+                ", posX=" + posX +
+                ", posY=" + posY +
+                ", kapitaen=" + kapitaen.getName() +
+                ", integritaetsgrad=" + integritaetsgrad +
+                ", energieschild=" + energieschild +
+                ", energieVersorgung=" + energieVersorgung +
+                ", manoevrierFaehigkeit=" + manoevrierFaehigkeit +
+                ", waffenstaerke=" + waffenstaerke +
+                ", ladungen=" + ladungen +
+                ", ladungskapazitaet=" + ladungskapazitaet +
+                ", typ='" + typ + '\'' +
+                '}';
+    }
 }
 

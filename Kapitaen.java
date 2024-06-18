@@ -46,8 +46,14 @@ public class Kapitaen {
         int zufall = (int)(Math.random() * 10) + 1;
         if (zufall <= 5) {
             System.out.println("Die Verhandlung war erfolgreich!");
+            if(this.getGeld()>1) {
+                System.out.println("Wir haben 1 Geld als Entschädigung gezahlt.");
+                this.setGeld(getGeld()-1);
+            }
+
         } else {
             System.out.println("Die Verhandlung war nicht erfolgreich.");
+            System.out.println("Wir werden beschossen, nichts wie weg hier!");
         }
     }
 }
