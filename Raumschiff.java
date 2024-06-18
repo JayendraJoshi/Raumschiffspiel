@@ -135,8 +135,18 @@ public class Raumschiff {
                 System.out.println("JA = 1");
                 System.out.println("NEIN = beliebiges zeichen");
                 String input = scanner.nextLine();
-                if(input.equals("1"))return true;
-                else return false;
+                if (!input.isEmpty()) {
+                    try {
+                        if(input.equals("1")){
+                            return true;
+                        }else{
+                            return false;
+                        }
+                    } catch (Exception e) {
+                        System.out.println("Verstanden, es wird keine Ressource abgebaut.");
+                    }
+
+                }
             }
 
         }

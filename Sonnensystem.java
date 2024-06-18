@@ -69,8 +69,11 @@ public class Sonnensystem {
                     boolean wahl = raumschiffe.get(0).wahlZumAbbauEinerRessource();
                     if(wahl==true){
                         System.out.println("Geben Sie den index der Ressource an.");
-                        int index = Integer.valueOf(scanner.nextLine());
-                       raumschiffe.get(0).ressourceAbbauen(planet.getRessource(index));
+                        scanner.nextLine();
+                        int index = Integer.parseInt(scanner.nextLine());
+                        raumschiffe.get(0).ressourceAbbauen(planet.getRessource(index));
+                        System.out.println("Neue Ressource aufgenommen, Liste aller aktuellen Ladungen:");
+                        System.out.println(raumschiffe.get(0).getLadungen());
                     }
                 }
             }

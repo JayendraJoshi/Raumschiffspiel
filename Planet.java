@@ -32,7 +32,7 @@ public class Planet {
         return posY;
     }
     public Ressource getRessource(int nummer){
-        if(this.ressourcen.size()-1>nummer){
+        if(this.ressourcen.size()-1>=nummer){
             if(this.ressourcen.get(nummer).getEinheit()>=1){
                 this.ressourcen.get(nummer).setEinheit(this.ressourcen.get(nummer).getEinheit()-1);
                 return new Ressource(ressourcen.get(nummer).getName(),1,ressourcen.get(nummer).getGewicht(),ressourcen.get(nummer).getWert());
