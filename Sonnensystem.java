@@ -56,14 +56,15 @@ public class Sonnensystem {
             for (int i = 1; i < raumschiffe.size(); i++) {
                 if (raumschiffe.get(0).pruefeKoordinaten(raumschiffe.get(i).getX(), raumschiffe.get(i).getY())) {
                     System.out.println("Das Raumschiff ist mit dem Raumschiff " + raumschiffe.get(i).getName() + " kollidiert.");
+                    gameOver=true;
+                    break;
                 }
-                gameOver=true;
-                break;
+
             }
 
             for (Planet planet : planeten) {
                 if (raumschiffe.get(0).pruefeKoordinaten(planet.getPosX(), planet.getPosY())) {
-                    System.out.println("Der Planet " + planet.getName() + " wurde erreicht." + " Atmosphäre: " + planet.getAtmosphare()+"Ressourcen: ");
+                    System.out.println("Der Planet " + planet.getName() + " wurde erreicht." + " Atmosphäre: " + planet.getAtmosphare());
                     planet.showRessourcen();
                     boolean wahl = raumschiffe.get(0).wahlZumAbbauEinerRessource();
                     if(wahl==true){

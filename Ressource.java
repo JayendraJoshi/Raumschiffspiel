@@ -33,6 +33,6 @@ public class Ressource {
 
     @Override
     public String toString(){
-        return "Name: "+this.name+", Einheit: "+this.einheit+", gewicht: "+this.gewicht+", Wert"+this.wert;
+        return "Name: "+this.name+", Einheit: "+this.einheit+", gewicht: "+this.gewicht+", Wert: "+this.wert;
     }
 }
