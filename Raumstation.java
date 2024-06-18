@@ -18,4 +18,11 @@ public class Raumstation {
         // Aufrüstung erhöht die Waffenstärke des Raumschiffs
         raumschiff.setWaffenstaerke(raumschiff.getWaffenstaerke() + 10);
     }
+
+    public int getPosX() {
+        return posX;
+    }
+    public int getPosY(){
+        return posY;
+    }
 }

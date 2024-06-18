@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Raumschiff {
 
@@ -16,6 +17,7 @@ public class Raumschiff {
         private ArrayList<Ladung> ladungen;
         protected int ladungskapazitaet;
         protected String typ;
+        private Scanner scanner;
 
         public Raumschiff(String name,int posX, int posY, Kapitaen kapitaen,int integritaetsgrad, int energieschild, int energieVersorgung, int manoevrierFaehigkeit, int waffenstaerke, int ladungskapazitaet) {
             this.name = name;
@@ -29,6 +31,7 @@ public class Raumschiff {
             this.waffenstaerke = waffenstaerke;
             this.ladungen = new ArrayList<>();
             this.ladungskapazitaet = ladungskapazitaet;
+            this.scanner = new Scanner(System.in);
         }
 
         public Kapitaen getKapitaen() {
@@ -75,10 +78,10 @@ public class Raumschiff {
         public void angreifen(Raumschiff gegner) {
             int zufall = (int)(Math.random() * 10) + 1;
             int schaden = this.waffenstaerke * zufall;
-            gegner.vertiedigen(schaden);
+            gegner.verteidigen(schaden);
         }
 
-        public void vertiedigen(int schaden) {
+        public void verteidigen(int schaden) {
             int verteidigung = this.energieschild + this.manoevrierFaehigkeit + this.getKapitaen().getErfahrung();
             int endSchaden = schaden - verteidigung;
             if (endSchaden > 0) {
@@ -123,6 +126,20 @@ public class Raumschiff {
             getKapitaen().setGeld(getKapitaen().getGeld() + ladung.getWert());
             station.addLadung(ladung);
         }
+        public void ressourceAbbauen(Ressource ressource){
+            this.ladungen.add(new Ladung(ressource.getName(),ressource.getEinheit(), ressource.getGewicht(), ressource.getWert()));
+        }
+        public boolean wahlZumAbbauEinerRessource(){
+            while(true) {
+                System.out.println("Möchten Sie eine Ressource abbauen?");
+                System.out.println("JA = 1");
+                System.out.println("NEIN = beliebiges zeichen");
+                String input = scanner.nextLine();
+                if(input.equals("1"))return true;
+                else return false;
+            }
+
+        }
         public String getTyp(){
             return typ;
         }
@@ -136,6 +153,9 @@ public class Raumschiff {
 
         public void setIntegritaetsgrad(int integritaetsgrad) {
             this.integritaetsgrad = integritaetsgrad;
+        }
+        public int getIntegritaetsgrad(){
+            return this.integritaetsgrad;
         }
 }
 
